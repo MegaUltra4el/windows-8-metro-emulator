@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Windows 8 Remake v0.0.0.0001</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Окно предупреждения о первом запуске / фан-версии -->
+  <div id="first-launch-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <i class="fa-solid fa-circle-info modal-icon"></i>
+      <h3 data-key="welcomeTitle">Welcome!</h3>
+      <p data-key="welcomeText">This is a fan-made concept version and Metro UI interface emulator (v0.0.0.0001). Enjoy exploring!</p>
+      <button id="close-modal-btn" class="login-btn full-width" data-key="gotItBtn">Got it!</button>
+    </div>
+  </div>
+
+  <!-- Окно заглушки для невышедших функций -->
+  <div id="feature-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <i class="fa-solid fa-triangle-exclamation modal-icon" style="color: #ffc40d;"></i>
+      <h3 data-key="featureTitle">Coming Soon!</h3>
+      <p data-key="featureText">This feature is not available yet in version 0.0.0.0001. Stay tuned for future updates!</p>
+      <button id="close-feature-btn" class="login-btn full-width" data-key="closeBtn">OK</button>
+    </div>
+  </div>
+
+  <!-- Экран приветствия -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="windows-logo">
+        <div class="flag-part"></div>
+        <div class="flag-part"></div>
+        <div class="flag-part"></div>
+        <div class="flag-part"></div>
+      </div>
+      <div class="spinner">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <h1 class="splash-title">Windows 8 Remake</h1>
+      <p class="splash-disclaimer" data-key="splashDisclaimer">Metro UI Kernel v0.0.0.0001 (Fan Concept)</p>
+    </div>
+  </div>
+
+  <!-- Экран входа -->
+  <div id="login-screen" class="login-screen hidden">
+    <div class="login-card">
+      <div class="avatar-circle">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <h2 data-key="createProfile">Create Profile</h2>
+      <p class="login-subtitle" data-key="enterDetails">Enter username and password to log in</p>
+      
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required autocomplete="off" data-key-placeholder="usernamePlaceholder">
+        <input type="password" id="password" placeholder="Password" required data-key-placeholder="passwordPlaceholder">
+        <button type="submit" class="login-btn">
+          <span data-key="loginBtn">Log in</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Стартовый экран -->
+  <div id="start-screen" class="start-screen hidden">
+    <div class="start-header">
+      <div class="start-header-left">
+        <h1 class="header" data-key="startHeader">Start</h1>
+        <span class="version-badge">v0.0.0.0001</span>
+      </div>
+      <div class="user-profile">
+        <span id="user-display-name">User</span>
+        <div class="user-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="tiles-grid">
+      <div class="tile wide tile-blue" data-action="desktop">
+        <i class="fa-solid fa-desktop tile-icon"></i>
+        <span class="tile-label" data-key="tileDesktop">Desktop</span>
+      </div>
+      <div class="tile tile-darkblue" data-action="mail">
+        <i class="fa-solid fa-envelope tile-icon"></i>
+        <span class="tile-label" data-key="tileMail">Mail</span>
+      </div>
+      <div class="tile tile-orange" data-action="calendar">
+        <i class="fa-solid fa-calendar-days tile-icon"></i>
+        <span class="tile-label" data-key="tileCalendar">Calendar</span>
+      </div>
+      <div class="tile wide tile-teal" data-action="store">
+        <i class="fa-solid fa-bag-shopping tile-icon"></i>
+        <span class="tile-label" data-key="tileStore">Store</span>
+      </div>
+      <div class="tile tile-yellow" data-action="photos">
+        <i class="fa-solid fa-image tile-icon"></i>
+        <span class="tile-label" data-key="tilePhotos">Photos</span>
+      </div>
+      <div class="tile large tile-blue" data-action="weather">
+        <i class="fa-solid fa-cloud-sun tile-icon large-icon"></i>
+        <span class="tile-label" data-key="tileWeather">Weather</span>
+      </div>
+      <div class="tile tile-purple" id="settings-tile">
+        <i class="fa-solid fa-gear tile-icon"></i>
+        <span class="tile-label" data-key="tileSettings">Settings</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Панель параметров -->
+  <div id="settings-panel" class="side-panel">
+    <div class="side-panel-header">
+      <h2 data-key="settingsTitle">Settings</h2>
+      <button id="close-settings-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="setting-group">
+      <label data-key="languageLabel">System Language</label>
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+      </select>
+    </div>
+    <div class="setting-group">
+      <button id="update-btn" class="login-btn btn-update" data-key="checkForUpdates">Check for Updates</button>
+    </div>
+    <div class="setting-group">
+      <button id="reset-first-launch-btn" class="login-btn btn-reset" data-key="resetFirstLaunch">Reset First Launch</button>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
